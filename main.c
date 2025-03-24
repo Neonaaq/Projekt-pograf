@@ -36,22 +36,22 @@ int main(int argc, char *argv[])
 
     //  Wizualizacja grafu:
     
-    int arow = 0, acol = 0;
-    for(int i=0; i<lwezlow; i++) {
-        while(p[i].row!=arow) {
-            arow++;
-            acol=0;
-            printf("\n");
-        }
-        while(p[i].column!=acol) {
-            acol++;
-            printf("   ");
-        }
-        acol++;
-        if(i>=0 && i <10) printf(" %d ", i);
-        if(i>=10 && i <100) printf(" %d", i);
-        if(i>=100) printf("%d", i);
-    }
+    // int arow = 0, acol = 0;
+    // for(int i=0; i<lwezlow; i++) {
+    //     while(p[i].row!=arow) {
+    //         arow++;
+    //         acol=0;
+    //         printf("\n");
+    //     }
+    //     while(p[i].column!=acol) {
+    //         acol++;
+    //         printf("   ");
+    //     }
+    //     acol++;
+    //     if(i>=0 && i <10) printf(" %d ", i);
+    //     if(i>=10 && i <100) printf(" %d", i);
+    //     if(i>=100) printf("%d", i);
+    // }
 
     free(p);
     for(int i=0;i<lwezlow;i++) {
