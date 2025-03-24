@@ -2,17 +2,30 @@
 #include <stdlib.h>
 #include <string.h>
 #include "odczytajgraf.h"
+#include "args.h"
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
     Komorka *p = malloc(sizeof(Komorka));
     int **macierz, lwezlow;
-    FILE *plik = fopen("graf.csrrg","r");
+    FILE *plik = fopen(argv[1],"r");
+    struct Flagi flaga;
 
     lwezlow = odczytaj_graf(&p, &macierz, plik);
     if(lwezlow == -1){
         return 0;
     }
+
+    if(parse_args(argc, argv, &flaga, lwezlow) != 0) {
+        return 1;
+    }
+
+    //Test czy flagi sa poprawnie wczytywane
+    
+    //printf("Division = %d\n", flaga.division);
+    //printf("Hem = %d\n", flaga.hem);
+    //printf("Tryb pliku: %s\n", flaga.file_mode == TEXT ? "tekstowy" : "binarny");
+    //printf("Plik wyjsciowy: %s\n", flaga.output_filename);
 
     // Test, czy macierz dobrze ma zapisane połączenia np dla 0:
 
