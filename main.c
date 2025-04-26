@@ -3,6 +3,7 @@
 #include <string.h>
 #include "odczytajgraf.h"
 #include "args.h"
+#include "podziel_graf.h"
 
 int main(int argc, char *argv[])
 {
@@ -19,6 +20,8 @@ int main(int argc, char *argv[])
     if(parse_args(argc, argv, &flaga, lwezlow) != 0) {
         return 1;
     }
+
+    podziel_graf(p, macierz, lwezlow, &flaga);
 
     //Test czy flagi sa poprawnie wczytywane
     
@@ -52,6 +55,15 @@ int main(int argc, char *argv[])
     //     if(i>=10 && i <100) printf(" %d", i);
     //     if(i>=100) printf("%d", i);
     // }
+
+
+
+    // Sprawdzenie, czy dobrze zostaly podzielone
+    //FILE *out = fopen(flaga.output_filename, flaga.file_mode == TEXT ? "w" : "wb");
+    //for (int i = 0; i < lwezlow; i++) {
+    //    fprintf(out, "%d %d\n", i, p[i].part + 1);
+    //}
+    //fclose(out);
 
     free(p);
     for(int i=0;i<lwezlow;i++) {
