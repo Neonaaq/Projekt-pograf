@@ -25,6 +25,7 @@ int odczytaj_graf(Komorka **p, int ***macierz, FILE *plik) {              // odc
             // drugi wiersz
             case 2:
                 (*p)[lwezlow].column = liczba;
+                lwezlow++;
                 if(liczba > maxw) {
                     printf("Błąd FILE: Zły format lub niepoprawne dane. Program przerywa działanie.");
                     fclose(plik);
@@ -178,5 +179,5 @@ int odczytaj_graf(Komorka **p, int ***macierz, FILE *plik) {              // odc
     }
     fclose(plik);
     free(T);
-    return lwezlow + 1;     // +1 bo doliczamy "0"
+    return lwezlow;     // +1 bo doliczamy "0"
 }
