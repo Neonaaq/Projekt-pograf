@@ -68,6 +68,15 @@ void podziel_graf(Komorka *p, int **macierz, int lwezlow, struct Flagi *flaga){
     p[w].part = czesc[w];
   }
 
+  //zniszczenie krawedzi jesli wezly sa w innych czesciach
+  for(int i = 0; i<lwezlow; i++) {
+    for(int j = 0; j<lwezlow; j++) {
+      if(czesc[i] != czesc[j]) {
+        macierz[i][j] = 0;
+      }
+    }
+  }
+
   free(czesc);
   free(rozmiar);
 }
