@@ -25,7 +25,6 @@ int odczytaj_graf(Komorka **p, int ***macierz, FILE *plik) {              // odc
             // drugi wiersz
             case 2:
                 (*p)[lwezlow].column = liczba;
-                lwezlow++;
                 if(liczba > maxw) {
                     printf("Błąd FILE: Zły format lub niepoprawne dane. Program przerywa działanie.");
                     fclose(plik);
@@ -55,6 +54,7 @@ int odczytaj_graf(Komorka **p, int ***macierz, FILE *plik) {              // odc
                         return -1;
                     }
                 }
+                lwezlow++;
                 break;
             // trzeci wiersz
             case 3:
@@ -104,9 +104,9 @@ int odczytaj_graf(Komorka **p, int ***macierz, FILE *plik) {              // odc
                 break;
             // czwarty wiersz
             case 4:
-                *macierz = malloc(lwezlow * sizeof(int*));
+                *macierz = malloc((lwezlow+1) * sizeof(int*));
                 for(int i=0; i<lwezlow; i++) {
-                    (*macierz)[i] = calloc(lwezlow, sizeof(int));
+                    (*macierz)[i] = calloc(lwezlow+1, sizeof(int));
                 }
                 i=0;
                 T = malloc(lwezlow * sizeof(int));
@@ -151,7 +151,7 @@ int odczytaj_graf(Komorka **p, int ***macierz, FILE *plik) {              // odc
                     for(int i=liczba1+1; i<liczba2; i++) {
                         (*macierz)[T[liczba1]][T[i]] = 1;
                         // dla grafu nieskierowanego jeszcze:
-                        // macierz[T[i]][liczba1] = 1;
+                        (*macierz)[T[i]][T[liczba1]] = 1;
                     }
                     liczba1 = liczba2;
                     //
