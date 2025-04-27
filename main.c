@@ -21,8 +21,6 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    podziel_graf(p, macierz, lwezlow, &flaga);
-
     //Test czy flagi sa poprawnie wczytywane
     
     //printf("Division = %d\n", flaga.division);
@@ -56,7 +54,8 @@ int main(int argc, char *argv[])
      //    if(i>=100) printf("%d", i);
      //}
     //printf("\n");
-
+    
+    podziel_graf(p, macierz, lwezlow, &flaga);
 
     // Sprawdzenie, czy dobrze zostaly podzielone
 
@@ -65,6 +64,13 @@ int main(int argc, char *argv[])
     //    fprintf(out, "%d %d\n", i, p[i].part + 1);
     //}
     //fclose(out);
+
+    // Test, czy macierz ma usunięte połączenia np dla 0:
+
+     //for(int i=0; i<lwezlow; i++) {
+     //    if(macierz[0][i]==1)
+     //        printf("%d\n", i);
+     //}
 
     free(p);
     for(int i=0;i<lwezlow;i++) {
