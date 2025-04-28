@@ -4,6 +4,7 @@
 #include "odczytajgraf.h"
 #include "args.h"
 #include "podziel_graf.h"
+#include "wypiszgraf.h"
 
 int main(int argc, char *argv[])
 {
@@ -71,6 +72,10 @@ int main(int argc, char *argv[])
      //    if(macierz[0][i]==1)
      //        printf("%d\n", i);
      //}
+
+    plik = fopen(argv[1],"r");
+    wypiszgraf(plik, macierz, lwezlow, &flaga);
+
 
     free(p);
     for(int i=0;i<lwezlow;i++) {
