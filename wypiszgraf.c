@@ -32,10 +32,8 @@ void wypiszgraf(FILE *plik_we, int **macierz, int lwezlow, struct Flagi *flaga)
 
     while(l<3)
     {
-        printf("e\n");
         while((znak = fgetc(plik_we)) != '\n' && znak != EOF) 
         {
-            printf("d\n");
             if(tryb==0) fputc(znak, plik_wy);
             else        
             {
