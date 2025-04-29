@@ -30,31 +30,31 @@ int main(int argc, char *argv[])
     //printf("Plik wyjsciowy: %s\n", flaga.output_filename);
 
     // Test, czy macierz dobrze ma zapisane połączenia np dla 0:
-
-     //for(int i=0; i<lwezlow; i++) {
-     //    if(macierz[0][i]==1)
-     //        printf("%d\n", i);
-     //}
+    // printf("Polaczenia wezla 0:\n");
+    //  for(int i=0; i<lwezlow; i++) {
+    //     if(macierz[0][i]==1)
+    //         printf("%d\n", i);
+    //  }
 
     //  Wizualizacja grafu:
     
-     //int arow = 0, acol = 0;
-     //for(int i=0; i<lwezlow; i++) {
-     //    while(p[i].row!=arow) {
-     //        arow++;
-     //        acol=0;
-     //        printf("\n");
-     //    }
-     //    while(p[i].column!=acol) {
-     //        acol++;
-     //        printf("   ");
-     //    }
-     //    acol++;
-     //    if(i>=0 && i <10) printf(" %d ", i);
-     //    if(i>=10 && i <100) printf(" %d", i);
-     //    if(i>=100) printf("%d", i);
-     //}
-    //printf("\n");
+    //  int arow = 0, acol = 0;
+    //  for(int i=0; i<lwezlow; i++) {
+    //     while(p[i].row!=arow) {
+    //         arow++;
+    //         acol=0;
+    //         printf("\n");
+    //     }
+    //     while(p[i].column!=acol) {
+    //         acol++;
+    //         printf("   ");
+    //     }
+    //     acol++;
+    //     if(i>=0 && i <10) printf(" %d ", i);
+    //     if(i>=10 && i <100) printf(" %d", i);
+    //     if(i>=100) printf("%d", i);
+    //  }
+    // printf("\n");
     
     podziel_graf(p, macierz, lwezlow, &flaga);
 
@@ -72,8 +72,7 @@ int main(int argc, char *argv[])
      //    if(macierz[0][i]==1)
      //        printf("%d\n", i);
      //}
-
-    plik = fopen(argv[1],"r");
+    
     wypiszgraf(plik, macierz, lwezlow, &flaga);
 
 
@@ -82,5 +81,6 @@ int main(int argc, char *argv[])
         free(macierz[i]);
     }
     free(macierz);
+    fclose(plik);
     return 0;
 }

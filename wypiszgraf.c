@@ -19,12 +19,23 @@ void wypiszgraf(FILE *plik_we, int **macierz, int lwezlow, struct Flagi *flaga)
     FILE *plik_wy = fopen(flaga->output_filename, "w");
     char znak;
     int tryb=0;
+
+    rewind(plik_we);
+    if(plik_we == NULL || fgetc(plik_we) == EOF) {
+        printf("Błąd NULL: Plik jest pusty. Program przerywa działanie.\n");
+        fclose(plik_we);
+        return;
+    }
+    rewind(plik_we);
+    
     if(flaga->file_mode==BINARY)  tryb=1;
 
     while(l<3)
     {
+        printf("e\n");
         while((znak = fgetc(plik_we)) != '\n' && znak != EOF) 
         {
+            printf("d\n");
             if(tryb==0) fputc(znak, plik_wy);
             else        
             {
@@ -102,6 +113,5 @@ void wypiszgraf(FILE *plik_we, int **macierz, int lwezlow, struct Flagi *flaga)
         }
     }
 
-    fclose(plik_wy);
     fclose(plik_we);
 }
