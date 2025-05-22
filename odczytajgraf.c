@@ -177,7 +177,7 @@ int odczytaj_graf(Komorka **p, int ***macierz, FILE *plik) {              // odc
         fclose(plik);
         return -1;
     }
-    fclose(plik);
+    //fclose(plik);
     free(T);
     return lwezlow;
 }
