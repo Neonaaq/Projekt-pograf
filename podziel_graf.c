@@ -42,9 +42,15 @@ void podziel_graf(Komorka *p, int **macierz, int lwezlow, struct Flagi *flaga){
   int lczesci = flaga->division;
   int margines = flaga->hem;
 
-  double avg_size = (double) lwezlow / lczesci;
-  double max_size = avg_size  * (1 + (margines/100.0));
-  double min_size = avg_size  * (1 - (margines/100.0));
+  //TEST
+  printf("lwezlow = %d, lczesci = %d\n", lwezlow, lczesci);
+
+  int avg_size = lwezlow / lczesci;
+  int max_size = avg_size  * (1 + (margines/100.0));
+  int min_size = avg_size  * (1 - (margines/100.0));
+
+  //TEST
+  printf("avg = %d, max = %d, min = %d\n",avg_size, max_size, min_size);
 
   int *czesc = malloc(lwezlow * sizeof(int));
   int *rozmiar = calloc(lczesci, sizeof(int));
@@ -67,15 +73,23 @@ void podziel_graf(Komorka *p, int **macierz, int lwezlow, struct Flagi *flaga){
   for(int w = 0; w < lwezlow; w++) {
     p[w].part = czesc[w];
   }
+  printf("%d, %d\n", p[93].part, p[94].part);
 
   //zniszczenie krawedzi jesli wezly sa w innych czesciach
-  for(int i = 0; i<lwezlow; i++) {
-    for(int j = 0; j<lwezlow; j++) {
-      if(czesc[i] != czesc[j]) {
+  for(int i=0; i<lwezlow; i++) {
+    for(int j=0; j<lwezlow; j++) {
+      if(i == j) continue;
+      if(p[i].part != p[j].part) {
         macierz[i][j] = 0;
+        macierz[j][i] = 0;
       }
     }
   }
+  //TEST
+  for (int i =0; i<lczesci; i++) {
+    printf("czesc %d = %d\n", i, rozmiar[i]);
+  }
+
 
   free(czesc);
   free(rozmiar);
