@@ -21,15 +21,7 @@ int main(int argc, char *argv[])
     if(parse_args(argc, argv, &flaga, lwezlow) != 0) {
         return 1;
     }
-    //TESCIIK
-    FILE *plik3 = fopen("testpol1.txt","w");
-    for (int i=0; i<lwezlow; i++) {
-        for (int j=0; j<lwezlow; j++) {
-            if (j > i)
-                fprintf(plik3,"[%d][%d] = %d\n",i, j, macierz[i][j]);
-        }
-    }
-    fclose(plik3);
+
 
     //Test czy flagi sa poprawnie wczytywane
     
@@ -39,11 +31,11 @@ int main(int argc, char *argv[])
     //printf("Plik wyjsciowy: %s\n", flaga.output_filename);
 
     // Test, czy macierz dobrze ma zapisane połączenia np dla 83:
-     printf("Polaczenia wezla 83:\n");
-      for(int i=0; i<lwezlow; i++) {
-         if(macierz[83][i]==1 || macierz[i][83] == 1)
-             printf("%d\n", i);
-      }
+     // printf("Polaczenia wezla 81:\n");
+     //  for(int i=0; i<lwezlow; i++) {
+     //     if(macierz[81][i]==1 || macierz[i][83] == 1)
+     //         printf("%d\n", i);
+     //  }
 
     //  Wizualizacja grafu:
     
@@ -83,18 +75,6 @@ int main(int argc, char *argv[])
      //}
     
     wypiszgraf(plik, macierz, lwezlow, &flaga);
-
-    //TEST  NA POLACZENIA 2
-    FILE *plik2 = fopen("testpol.txt","w");
-    for (int i=0; i<lwezlow; i++) {
-        for (int j=0; j<lwezlow; j++) {
-            if (j > i)
-            fprintf(plik2,"[%d][%d] = %d; %d, %d\n",i, j, macierz[i][j], p[i].part, p[j]. part);
-        }
-    }
-    fclose(plik2);
-
-
 
     FILE *plikj = fopen("struktura.txt", "w");
 

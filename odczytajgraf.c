@@ -3,9 +3,8 @@
 #include <string.h>
 #include "odczytajgraf.h"
 
-
 int odczytaj_graf(Komorka **p, int ***macierz, FILE *plik) {              // odczytywanie grafu z pliku
-    int maxw, lwierszy=0, lwezlow=0, liczba, *T;
+    int maxw, lwierszy=0, lwezlow=0, liczba, *T, Tlength=0;
     char znak;
     // Sprawdzanie czy plik jest dobry
     if(plik == NULL || fgetc(plik) == EOF) {
@@ -136,6 +135,7 @@ int odczytaj_graf(Komorka **p, int ***macierz, FILE *plik) {              // odc
                         return -1;
                     }
                 }
+                Tlength = i;
                 break;
             // 5+ wiersz
             default:
@@ -157,6 +157,11 @@ int odczytaj_graf(Komorka **p, int ***macierz, FILE *plik) {              // odc
                     //
                     znak = fgetc(plik);
                     if(znak == EOF ||znak == '\n') {
+                        liczba2 = Tlength;
+                        for(int i=liczba1+1; i<liczba2; i++) {
+                            (*macierz)[T[liczba1]][T[i]] = 1;
+                            (*macierz)[T[i]][T[liczba1]] = 1;
+                        }
                         break;
                     }
                     else if(znak == ';') {
