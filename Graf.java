@@ -14,6 +14,9 @@ public class Graf {
     private static int lwezlow;
     String filePath;
 
+    private JPanel panel;
+    private JScrollPane sp;
+
     public Graf(String filePath) {
         this.filePath = filePath;
     }
@@ -102,21 +105,35 @@ public class Graf {
     }
 
     public JPanel StworzRysunekGrafu() {
-        JPanel panel = new JPanel();
+        panel = new JPanel();
         panel.setLayout(new BorderLayout());
-        Rysuj r = new Rysuj(lwezlow, matrix, column, row, part);
+         Rysuj r = new Rysuj(lwezlow, matrix, column, row, part);
         int max = getMaxColumnOrRow();
+        System.out.println(max);
         if(max*20>600) {
+            System.out.println(max*20);
             r.setPreferredSize(new Dimension(max*30, max*30));
         } else {
             r.setPreferredSize(new Dimension(600, 600));
         }
+        System.out.println(r.getPreferredSize());
 
-        JScrollPane scrollPane = new JScrollPane(r);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        sp = new JScrollPane();
+        sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        sp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        panel.add(sp, BorderLayout.CENTER);
+        this.aktualizujScroll(r);
 
-        panel.add(scrollPane, BorderLayout.CENTER);
         return panel;
+    }
+
+    public int getLwezlow(){
+        return lwezlow;
+    }
+
+    public void aktualizujScroll(Rysuj r){
+        sp.setViewportView(r);
+        sp.revalidate();
+        sp.repaint();
     }
 }

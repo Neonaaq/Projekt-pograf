@@ -22,6 +22,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
+
     //Test czy flagi sa poprawnie wczytywane
     
     //printf("Division = %d\n", flaga.division);
@@ -29,12 +30,12 @@ int main(int argc, char *argv[])
     //printf("Tryb pliku: %s\n", flaga.file_mode == TEXT ? "tekstowy" : "binarny");
     //printf("Plik wyjsciowy: %s\n", flaga.output_filename);
 
-    // Test, czy macierz dobrze ma zapisane połączenia np dla 0:
-    // printf("Polaczenia wezla 0:\n");
-    //  for(int i=0; i<lwezlow; i++) {
-    //     if(macierz[0][i]==1)
-    //         printf("%d\n", i);
-    //  }
+    // Test, czy macierz dobrze ma zapisane połączenia np dla 83:
+     // printf("Polaczenia wezla 81:\n");
+     //  for(int i=0; i<lwezlow; i++) {
+     //     if(macierz[81][i]==1 || macierz[i][83] == 1)
+     //         printf("%d\n", i);
+     //  }
 
     //  Wizualizacja grafu:
     

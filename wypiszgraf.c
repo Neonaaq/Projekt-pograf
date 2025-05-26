@@ -27,7 +27,7 @@ void wypiszgraf(FILE *plik_we, int **macierz, int lwezlow, struct Flagi *flaga)
         return;
     }
     rewind(plik_we);
-    
+
     if(flaga->file_mode==BINARY)  tryb=1;
 
     while(l<3)
